@@ -1,0 +1,70 @@
+10:53:14 BASELINE
+10:53:14 API=up  ready-nodes=5  ready-pods=6/6
+      4 ha-worker
+      6 ha-worker2
+10:53:14 FAILURE 1: stop worker ha-worker
+10:53:25 API=up  ready-nodes=5  ready-pods=6/6
+10:53:35 API=up  ready-nodes=5  ready-pods=6/6
+10:53:45 API=up  ready-nodes=5  ready-pods=6/6
+10:53:56 API=up  ready-nodes=5  ready-pods=6/6
+10:54:06 API=up  ready-nodes=4  ready-pods=6/6
+10:54:16 API=up  ready-nodes=4  ready-pods=6/6
+10:54:26 API=up  ready-nodes=4  ready-pods=6/6
+10:54:36 API=up  ready-nodes=4  ready-pods=6/6
+10:54:46 API=up  ready-nodes=4  ready-pods=6/6
+10:54:57 API=up  ready-nodes=4  ready-pods=6/6
+10:55:07 API=up  ready-nodes=4  ready-pods=6/6
+10:55:17 API=up  ready-nodes=4  ready-pods=6/6
+10:55:27 API=up  ready-nodes=4  ready-pods=6/6
+10:55:37 API=up  ready-nodes=4  ready-pods=6/6
+NAME                STATUS     ROLES           AGE   VERSION
+ha-control-plane    Ready      control-plane   13m   v1.31.0
+ha-control-plane2   Ready      control-plane   13m   v1.31.0
+ha-control-plane3   Ready      control-plane   13m   v1.31.0
+ha-worker           NotReady   <none>          13m   v1.31.0
+ha-worker2          Ready      <none>          13m   v1.31.0
+      4 ha-worker
+      3 ha-worker2
+10:55:37 RECOVER: start ha-worker
+10:55:48 API=up  ready-nodes=5  ready-pods=6/6
+10:55:58 API=up  ready-nodes=5  ready-pods=6/6
+10:56:08 API=up  ready-nodes=5  ready-pods=6/6
+10:56:18 API=up  ready-nodes=5  ready-pods=6/6
+10:56:28 API=up  ready-nodes=5  ready-pods=6/6
+10:56:38 API=up  ready-nodes=5  ready-pods=6/6
+10:56:49 API=up  ready-nodes=5  ready-pods=6/6
+10:56:59 API=up  ready-nodes=5  ready-pods=6/6
+10:56:59 FAILURE 2: stop control-plane ha-control-plane2 (etcd quorum 2 of 3 must hold)
+10:57:19 API=up  ready-nodes=5  ready-pods=6/6
+10:57:29 API=up  ready-nodes=5  ready-pods=6/6
+10:57:39 API=up  ready-nodes=4  ready-pods=6/6
+10:57:50 API=up  ready-nodes=4  ready-pods=6/6
+10:58:00 API=up  ready-nodes=4  ready-pods=6/6
+10:58:10 API=up  ready-nodes=4  ready-pods=6/6
+10:58:10 write test with one control plane down:
+deployment.apps/webtest scaled
+10:58:25 API=up  ready-nodes=4  ready-pods=8/6
+NAME                STATUS     ROLES           AGE   VERSION
+ha-control-plane    Ready      control-plane   16m   v1.31.0
+ha-control-plane2   NotReady   control-plane   16m   v1.31.0
+ha-control-plane3   Ready      control-plane   16m   v1.31.0
+ha-worker           Ready      <none>          16m   v1.31.0
+ha-worker2          Ready      <none>          16m   v1.31.0
+10:58:25 RECOVER: start ha-control-plane2
+10:58:35 API=up  ready-nodes=5  ready-pods=8/6
+10:58:46 API=up  ready-nodes=5  ready-pods=8/6
+10:58:56 API=up  ready-nodes=5  ready-pods=8/6
+10:59:06 API=up  ready-nodes=5  ready-pods=8/6
+10:59:16 API=up  ready-nodes=5  ready-pods=8/6
+10:59:26 API=up  ready-nodes=5  ready-pods=8/6
+10:59:36 API=up  ready-nodes=5  ready-pods=8/6
+10:59:47 API=up  ready-nodes=5  ready-pods=8/6
+10:59:57 API=up  ready-nodes=5  ready-pods=8/6
++------------------+---------+-------------------+-------------------------+-------------------------+------------+
+|        ID        | STATUS  |       NAME        |       PEER ADDRS        |      CLIENT ADDRS       | IS LEARNER |
++------------------+---------+-------------------+-------------------------+-------------------------+------------+
+| c463234486f3f3ef | started | ha-control-plane2 | https://172.18.0.4:2380 | https://172.18.0.4:2379 |      false |
+| ed3b372f1d693cef | started |  ha-control-plane | https://172.18.0.6:2380 | https://172.18.0.6:2379 |      false |
+| f8eb179563bffa07 | started | ha-control-plane3 | https://172.18.0.3:2380 | https://172.18.0.3:2379 |      false |
++------------------+---------+-------------------+-------------------------+-------------------------+------------+
+10:59:57 DONE

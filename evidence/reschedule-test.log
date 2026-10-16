@@ -1,0 +1,22 @@
+11:02:09 BASELINE pods per node:       3 ha-worker       3 ha-worker2 
+11:02:09 FAILURE: stop ha-worker2
+11:02:19 nodes-ready=5 pods per node:       3 ha-worker       3 ha-worker2 
+11:02:29 nodes-ready=5 pods per node:       3 ha-worker       3 ha-worker2 
+11:02:39 nodes-ready=5 pods per node:       3 ha-worker       3 ha-worker2 
+11:02:50 nodes-ready=4 pods per node:       3 ha-worker       3 ha-worker2 
+11:03:00 nodes-ready=4 pods per node:       3 ha-worker       3 ha-worker2 
+11:03:10 nodes-ready=4 pods per node:       3 ha-worker       3 ha-worker2 
+11:03:20 nodes-ready=4 pods per node:       6 ha-worker       3 ha-worker2 
+11:03:30 nodes-ready=4 pods per node:       6 ha-worker       3 ha-worker2 
+11:03:40 nodes-ready=4 pods per node:       6 ha-worker       3 ha-worker2 
+11:03:50 nodes-ready=4 pods per node:       6 ha-worker       3 ha-worker2 
+11:04:00 nodes-ready=4 pods per node:       6 ha-worker       3 ha-worker2 
+11:04:11 nodes-ready=4 pods per node:       6 ha-worker       3 ha-worker2 
+11:04:11 RECOVER: start ha-worker2
+NAME                STATUS   ROLES           AGE   VERSION
+ha-control-plane    Ready    control-plane   22m   v1.31.0
+ha-control-plane2   Ready    control-plane   22m   v1.31.0
+ha-control-plane3   Ready    control-plane   22m   v1.31.0
+ha-worker           Ready    <none>          22m   v1.31.0
+ha-worker2          Ready    <none>          22m   v1.31.0
+11:04:41 DONE

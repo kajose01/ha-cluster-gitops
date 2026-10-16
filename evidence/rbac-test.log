@@ -1,0 +1,9 @@
+PASS  alice  create  deployments  in dev         expected=yes got=yes
+PASS  alice  delete  pods         in dev         expected=yes got=yes
+PASS  alice  create  deployments  in staging     expected=no  got=no
+PASS  alice  get     pods         in production  expected=no  got=no
+PASS  bob    get     pods         in production  expected=yes got=yes
+PASS  bob    create  deployments  in dev         expected=no  got=no
+PASS  bob    delete  pods         in staging     expected=no  got=no
+PASS  nobody get     pods         in dev         expected=no  got=no
+RESULT: 8 passed, 0 failed

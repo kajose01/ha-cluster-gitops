@@ -1,0 +1,57 @@
+== nodes
+NAME                STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION   CONTAINER-RUNTIME
+ha-control-plane    Ready    control-plane   8m20s   v1.31.0   172.18.0.6    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1014-aws   containerd://1.7.18
+ha-control-plane2   Ready    control-plane   8m11s   v1.31.0   172.18.0.4    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1014-aws   containerd://1.7.18
+ha-control-plane3   Ready    control-plane   8m1s    v1.31.0   172.18.0.3    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1014-aws   containerd://1.7.18
+ha-worker           Ready    <none>          7m51s   v1.31.0   172.18.0.7    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1014-aws   containerd://1.7.18
+ha-worker2          Ready    <none>          7m51s   v1.31.0   172.18.0.5    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1014-aws   containerd://1.7.18
+
+== control-plane pods
+NAME                                        READY   STATUS    RESTARTS   AGE     IP           NODE                NOMINATED NODE   READINESS GATES
+etcd-ha-control-plane                       1/1     Running   0          8m19s   172.18.0.6   ha-control-plane    <none>           <none>
+etcd-ha-control-plane2                      1/1     Running   0          8m11s   172.18.0.4   ha-control-plane2   <none>           <none>
+etcd-ha-control-plane3                      1/1     Running   0          8m1s    172.18.0.3   ha-control-plane3   <none>           <none>
+kube-apiserver-ha-control-plane             1/1     Running   0          8m19s   172.18.0.6   ha-control-plane    <none>           <none>
+kube-apiserver-ha-control-plane2            1/1     Running   0          8m9s    172.18.0.4   ha-control-plane2   <none>           <none>
+kube-apiserver-ha-control-plane3            1/1     Running   0          7m58s   172.18.0.3   ha-control-plane3   <none>           <none>
+kube-controller-manager-ha-control-plane    1/1     Running   0          8m19s   172.18.0.6   ha-control-plane    <none>           <none>
+kube-controller-manager-ha-control-plane2   1/1     Running   0          8m9s    172.18.0.4   ha-control-plane2   <none>           <none>
+kube-controller-manager-ha-control-plane3   1/1     Running   0          7m58s   172.18.0.3   ha-control-plane3   <none>           <none>
+kube-scheduler-ha-control-plane             1/1     Running   0          8m19s   172.18.0.6   ha-control-plane    <none>           <none>
+kube-scheduler-ha-control-plane2            1/1     Running   0          8m9s    172.18.0.4   ha-control-plane2   <none>           <none>
+kube-scheduler-ha-control-plane3            1/1     Running   0          7m58s   172.18.0.3   ha-control-plane3   <none>           <none>
+
+== API health
+[+]poststarthook/apiservice-registration-controller ok
+[+]poststarthook/apiservice-discovery-controller ok
+[+]poststarthook/kube-apiserver-autoregistration ok
+[+]autoregister-completion ok
+[+]poststarthook/apiservice-openapi-controller ok
+[+]poststarthook/apiservice-openapiv3-controller ok
+[+]shutdown ok
+readyz check passed
+
+== component status
+[+]ping ok
+[+]log ok
+[+]etcd ok
+[+]poststarthook/start-apiserver-admission-initializer ok
+[+]poststarthook/generic-apiserver-start-informers ok
+
+== etcd members
++------------------+---------+-------------------+-------------------------+-------------------------+------------+
+|        ID        | STATUS  |       NAME        |       PEER ADDRS        |      CLIENT ADDRS       | IS LEARNER |
++------------------+---------+-------------------+-------------------------+-------------------------+------------+
+| c463234486f3f3ef | started | ha-control-plane2 | https://172.18.0.4:2380 | https://172.18.0.4:2379 |      false |
+| ed3b372f1d693cef | started |  ha-control-plane | https://172.18.0.6:2380 | https://172.18.0.6:2379 |      false |
+| f8eb179563bffa07 | started | ha-control-plane3 | https://172.18.0.3:2380 | https://172.18.0.3:2379 |      false |
++------------------+---------+-------------------+-------------------------+-------------------------+------------+
+
+== etcd endpoint health
++-------------------------+--------+-------------+-------+
+|        ENDPOINT         | HEALTH |    TOOK     | ERROR |
++-------------------------+--------+-------------+-------+
+| https://172.18.0.4:2379 |   true | 12.244513ms |       |
+| https://172.18.0.6:2379 |   true | 15.388978ms |       |
+| https://172.18.0.3:2379 |   true | 13.778221ms |       |
++-------------------------+--------+-------------+-------+
