@@ -1,0 +1,12 @@
+== dev
+deployment.apps/webapp   1/1   1     1     113s
+pod/webapp-8f4bcc8d4-clvr9   1/1   Running   0     113s
+== staging
+deployment.apps/webapp   2/2   2     2     113s
+pod/webapp-5c676b6894-sq5wx   1/1   Running   0     113s
+pod/webapp-5c676b6894-wgtcd   1/1   Running   0     113s
+== production
+deployment.apps/webapp   3/3   3     3     113s
+pod/webapp-5589989964-hbm2x   1/1   Running   0     113s
+pod/webapp-5589989964-hcxnd   1/1   Running   0     113s
+pod/webapp-5589989964-n2pz2   1/1   Running   0     113s
