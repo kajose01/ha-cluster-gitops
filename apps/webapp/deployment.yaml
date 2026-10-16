@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp
-  labels: { app: webapp, env: main }
+  labels: { app: webapp, env: staging }
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels: { app: webapp }
   template:
     metadata:
-      labels: { app: webapp, env: main }
+      labels: { app: webapp, env: staging }
     spec:
       containers:
         - name: web
